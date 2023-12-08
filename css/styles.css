@@ -1,5 +1,14 @@
-h1 {
+.menu {
     color: red;
+}
+
+.pizza {
+    color: red;
+}
+
+strong {
+    font-size: bold;
+    color: #007bff;
 }
 
 form {
