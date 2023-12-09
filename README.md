@@ -7,10 +7,10 @@
 _Open [gh-page site]()_
 
 ## Technologies Used
-*_HTML_
-*_CSS_
-*_Bootstrap_
-*_JavaScript_
+* _HTML_
+* _CSS_
+* _Bootstrap_
+* _JavaScript_
 
 ## Description
 
@@ -30,6 +30,10 @@ Describe: Pizza()
 Test: "It should return a Pizza object with two or more properties for toppings, size and cost"
 Code: let Cheese = new Pizza(["Cheese Pizza (Marinara, Mozzarella)"], ["Small, Med, Large"], 12.99);
 Expected Output: Pizza { toppings: ["Cheese Pizza (Marinara, Mozzarella)"], size: ["Small, Med, Large"], cost: 12.99}
+
+Test: "It should return selected section with ingredients"
+Code: "let Veggie = new Pizza(["Veggie Pizza (Fresh broccoli, tomatoes, green bell pepper)"], ["small, med, large"], 10.99);"
+Expected Output: Pizza { You've selected: Veggie Pizza (Fresh broccoli, tomatoes, green bell pepper). Size: small, med, large. Cost: 10.99 }
 
 ```
 
