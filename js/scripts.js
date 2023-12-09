@@ -107,11 +107,13 @@ function selectData() {
 }
 
 function farmHandler() {
-    const form = document.querySelector("form");
+    const form = document.getElementById("form");
     const result = document.getElementById("result");
     const result1 = document.getElementById("result1");
     const payment = document.getElementById("buyer1");
     const reset = document.getElementById("reset");
+    const form2 = document.getElementById("form2");
+
     form.addEventListener("submit", (e) => {
         e.preventDefault();
         const getInfo = getData();
@@ -124,7 +126,25 @@ function farmHandler() {
         result.innerText = getInfo;
         result1.innerText = getInfo2;
 
+        reset.addEventListener("click", () => {
+            form.removeAttribute("class");
+            document.getElementById("menu").removeAttribute("class", "hidden");
 
+            result.classList.add("hidden");
+            result1.classList.add("hidden");
+            payment.classList.add("hidden");
+            reset.classList.add("hidden");
+            form2.classList.add("hidden");
+
+            form.addEventListener("reset", () => {
+                form.reset();
+            })
+
+        })
+
+        payment.addEventListener("click", () => {
+            form2.classList.remove("hidden");
+        })
 
         form.setAttribute("class", "hidden");
         document.getElementById("menu").setAttribute("class", "hidden");

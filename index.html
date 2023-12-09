@@ -12,7 +12,7 @@
 <body>
     <h1 class="menu" id="menu">MENU</h1>
     <h2 class="pizza">Pizza</h2>
-    <form>
+    <form id="form">
         <label for="Cheese">
             <strong>Cheese(Classic)</strong>
             <input type="checkbox" name="pizza" value="cheese">
@@ -49,6 +49,8 @@
         <label for="large">large</label>
         <br>
         <button type="submit" id="button1">Place order</button>
+        <br>
+        <button type="reset" id="button2">Reset</button>
     </form>
     <div>
         <p class="hidden" id="result"></p>
@@ -58,6 +60,23 @@
         <button id="buyer1" type="submit" class="hidden"><strong>Payment</strong></button>
         <br>
         <button type="reset" id="reset" class="hidden">Choose another</button>
+    </div>
+
+    <div>
+        <form id="form2" class="hidden">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <br>
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+            <br>
+            <label for="cardNumber">Card Number:</label>
+            <input type="text" id="cardNumber" name="cardNumber" required>
+            <br>
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" rows="4" required></textarea>
+            <br>
+        </form>
     </div>
 
 
