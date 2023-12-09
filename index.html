@@ -11,7 +11,7 @@
 
 <body>
     <h1 class="menu" id="menu">MENU</h1>
-    <h2 class="pizza">Pizza</h2>
+    <h2 class="pizza" id="pizza">Pizza</h2>
     <form id="form">
         <label for="Cheese">
             <strong>Cheese(Classic)</strong>
@@ -76,7 +76,13 @@
             <label for="address">Address:</label>
             <textarea id="address" name="address" rows="4" required></textarea>
             <br>
+            <button id="confirm" type="submit"><strong>Confirm</strong></button>
         </form>
+    </div>
+
+    <div id="confirm2" class="hidden">
+        <p>You've ordered.</p>
+        <p>Come back again!</p>
     </div>
 
 

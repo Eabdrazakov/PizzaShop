@@ -135,6 +135,7 @@ function farmHandler() {
             payment.classList.add("hidden");
             reset.classList.add("hidden");
             form2.classList.add("hidden");
+            confirm2.classList.add("hidden");
 
             form.addEventListener("reset", () => {
                 form.reset();
@@ -144,6 +145,22 @@ function farmHandler() {
 
         payment.addEventListener("click", () => {
             form2.classList.remove("hidden");
+
+            const confirm = document.getElementById("confirm");
+            const confirm2 = document.getElementById("confirm2");
+
+            confirm.addEventListener("click", (e) => {
+                e.preventDefault();
+                confirm2.classList.remove("hidden");
+                reset.removeAttribute("class", "hidden");
+
+                document.getElementById("pizza").setAttribute("class", "hidden");
+                result.innerText = "";
+                result1.innerText = "";
+                form2.setAttribute("class", "hidden");
+            })
+
+            payment.classList.add("hidden");
         })
 
         form.setAttribute("class", "hidden");
