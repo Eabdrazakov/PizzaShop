@@ -24,20 +24,18 @@ Pizza.prototype.ingredient = function () {
 
 function getPizzaValue() {
     const checkBox = document.getElementsByName("pizza");
-    let selected = 0;
 
     for (let i = 0; i < checkBox.length; i++) {
         if (checkBox[i].checked) {
-            selected = checkBox[i].value;
-            break;
+            return checkBox[i].value;
         }
     }
-    return selected;
+    return null;
 }
 
 function getData() {
     const selected = getPizzaValue();
-    let getAllInfo = 0;
+    let getAllInfo = null;
     if (selected === "cheese") {
         getAllInfo = Cheese.ingredient();
     } else if (selected === "pepperoni") {
@@ -50,3 +48,16 @@ function getData() {
     return getAllInfo;
 }
 // console.log(getData());
+
+function farmHandler() {
+    const form = document.querySelector("form");
+    const result = document.getElementById("result");
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const getInfo = getData();
+        result.classList.remove("hidden");
+        result.innerText = getInfo;
+    });
+}
+
+document.addEventListener("DOMContentLoaded", farmHandler);
