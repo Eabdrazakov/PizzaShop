@@ -6,9 +6,9 @@ function Pizza(topping, size, cost) {
     this.cost = cost;
 }
 
-let Cheese = new Pizza(["Cheese Pizza:"]);
-let Pepperoni = new Pizza(["Pepperoni Pizza:"]);
-let Veggie = new Pizza(["Veggie Pizza:"]);
+let Cheese = new Pizza(["Cheese Pizza."]);
+let Pepperoni = new Pizza(["Pepperoni Pizza."]);
+let Veggie = new Pizza(["Veggie Pizza."]);
 
 let CheeseSize1 = new Pizza("cheese", "small", 10.99);
 let CheeseSize2 = new Pizza("cheese", "med", 12.99);
@@ -32,7 +32,7 @@ Pizza.prototype.ingredient = function () {
 // console.log(Veggie.ingredient())
 
 Pizza.prototype.sizeAndCost = function () {
-    return "Size: " + this.size + ". Cost: " + this.cost;
+    return "Size: " + this.size + ". Cost: " + this.cost.toFixed(2) + " $";
 }
 
 
@@ -59,7 +59,8 @@ function getData() {
     } else if (selected === "veggie") {
         getAllInfo = Veggie.ingredient();
     } else {
-        getAllInfo = null;
+        alert("Please select, what would you like to order!");
+        getAllInfo = "";
     }
     return getAllInfo;
 }
@@ -99,7 +100,8 @@ function selectData() {
     } else if (selected === "large6") {
         getAllInfo = Veggie3.sizeAndCost();
     } else {
-        return "Select size to get how much cost";
+        alert("Select size to get how much cost.");
+        getAllInfo = "";
     }
     return getAllInfo;
 }
@@ -107,12 +109,15 @@ function selectData() {
 function farmHandler() {
     const form = document.querySelector("form");
     const result = document.getElementById("result");
+    const result1 = document.getElementById("result1");
     form.addEventListener("submit", (e) => {
         e.preventDefault();
         const getInfo = getData();
         const getInfo2 = selectData();
         result.classList.remove("hidden");
-        result.innerText = getInfo + " " + getInfo2;
+        result1.classList.remove("hidden");
+        result.innerText = getInfo;
+        result1.innerText = getInfo2;
 
 
     });
