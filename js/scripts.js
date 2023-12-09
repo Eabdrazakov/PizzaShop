@@ -6,18 +6,34 @@ function Pizza(topping, size, cost) {
     this.cost = cost;
 }
 
-let Cheese = new Pizza(["Cheese Pizza (Marinara, Mozzarella)"], ["small, med, large"], 12.99);
-let Pepperoni = new Pizza(["Pepperoni Pizza (Marinara, Mozzarella, Liguria Pepperoni)"], ["small, med, large"], 13.85);
-let Veggie = new Pizza(["Veggie Pizza (Fresh broccoli, tomatoes, green bell pepper)"], ["small, med, large"], 10.99);
+let Cheese = new Pizza(["Cheese Pizza:"]);
+let Pepperoni = new Pizza(["Pepperoni Pizza:"]);
+let Veggie = new Pizza(["Veggie Pizza:"]);
+
+let CheeseSize1 = new Pizza("cheese", "small", 10.99);
+let CheeseSize2 = new Pizza("cheese", "med", 12.99);
+let CheeseSize3 = new Pizza("cheese", "large", 14.85);
+
+let Pepperoni1 = new Pizza("pepperoni", "small", 11.99);
+let Pepperoni2 = new Pizza("pepperoni", "med", 13.99);
+let Pepperoni3 = new Pizza("pepperoni", "large", 14.85);
+
+let Veggie1 = new Pizza("veggie", "small", 9.99);
+let Veggie2 = new Pizza("veggie", "med", 11.99);
+let Veggie3 = new Pizza("veggie", "large", 13.85);
 
 // console.log(Cheese)
 // console.log(Pepperoni)
 // console.log(Veggie)
 
 Pizza.prototype.ingredient = function () {
-    return "You've selected: " + this.topping + ". Size: " + this.size + ". Cost: " + this.cost;
+    return "You've selected: " + this.topping;
 };
 // console.log(Veggie.ingredient())
+
+Pizza.prototype.sizeAndCost = function () {
+    return "Size: " + this.size + ". Cost: " + this.cost;
+}
 
 
 //UI Logic
@@ -49,14 +65,56 @@ function getData() {
 }
 // console.log(getData());
 
+function getSizeValue() {
+    const sizeValue = document.getElementsByName("size");
+
+    for (let i = 0; i < sizeValue.length; i++) {
+        if (sizeValue[i].checked) {
+            return sizeValue[i].value;
+        }
+    }
+    return null;
+}
+// console.log(getSizeValue());
+
+function selectData() {
+    const selected = getSizeValue();
+    let getAllInfo = null;
+    if (selected === "small") {
+        getAllInfo = CheeseSize1.sizeAndCost();
+    } else if (selected === "med") {
+        getAllInfo = CheeseSize2.sizeAndCost();
+    } else if (selected === "large") {
+        getAllInfo = CheeseSize3.sizeAndCost();
+    } else if (selected === "small1") {
+        getAllInfo = Pepperoni1.sizeAndCost();
+    } else if (selected === "med2") {
+        getAllInfo = Pepperoni2.sizeAndCost();
+    } else if (selected === "large3") {
+        getAllInfo = Pepperoni3.sizeAndCost();
+    } else if (selected === "small4") {
+        getAllInfo = Veggie1.sizeAndCost();
+    } else if (selected === "med5") {
+        getAllInfo = Veggie2.sizeAndCost();
+    } else if (selected === "large6") {
+        getAllInfo = Veggie3.sizeAndCost();
+    } else {
+        return "Select size to get how much cost";
+    }
+    return getAllInfo;
+}
+
 function farmHandler() {
     const form = document.querySelector("form");
     const result = document.getElementById("result");
     form.addEventListener("submit", (e) => {
         e.preventDefault();
         const getInfo = getData();
+        const getInfo2 = selectData();
         result.classList.remove("hidden");
-        result.innerText = getInfo;
+        result.innerText = getInfo + " " + getInfo2;
+
+
     });
 }
 
