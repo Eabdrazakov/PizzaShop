@@ -22,14 +22,11 @@ let Veggie1 = new Pizza("veggie", "small", 9.99);
 let Veggie2 = new Pizza("veggie", "med", 11.99);
 let Veggie3 = new Pizza("veggie", "large", 13.85);
 
-// console.log(Cheese)
-// console.log(Pepperoni)
-// console.log(Veggie)
 
 Pizza.prototype.ingredient = function () {
     return "You've selected: " + this.topping;
 };
-// console.log(Veggie.ingredient())
+
 
 Pizza.prototype.sizeAndCost = function () {
     return "Size: " + this.size + ". Cost: " + this.cost.toFixed(2) + " $";
@@ -64,7 +61,7 @@ function getData() {
     }
     return getAllInfo;
 }
-// console.log(getData());
+
 
 function getSizeValue() {
     const sizeValue = document.getElementsByName("size");
@@ -76,7 +73,7 @@ function getSizeValue() {
     }
     return null;
 }
-// console.log(getSizeValue());
+
 
 function selectData() {
     const selected = getSizeValue();

@@ -11,6 +11,7 @@ _Open [gh-page site]()_
 * _CSS_
 * _Bootstrap_
 * _JavaScript_
+* _Test-Driven Development_
 
 ## Description
 
@@ -31,9 +32,70 @@ Test: "It should return a Pizza object with two or more properties for toppings,
 Code: let Cheese = new Pizza(["Cheese Pizza (Marinara, Mozzarella)"], ["Small, Med, Large"], 12.99);
 Expected Output: Pizza { toppings: ["Cheese Pizza (Marinara, Mozzarella)"], size: ["Small, Med, Large"], cost: 12.99}
 
-Test: "It should return selected section with ingredients"
-Code: "let Veggie = new Pizza(["Veggie Pizza (Fresh broccoli, tomatoes, green bell pepper)"], ["small, med, large"], 10.99);"
-Expected Output: Pizza { You've selected: Veggie Pizza (Fresh broccoli, tomatoes, green bell pepper). Size: small, med, large. Cost: 10.99 }
+Describe: Pizza.prototype.ingredient / Pizza.prototype.sizeAndCost
+
+Test: "It should return Cheese, size small section with ingredients"
+Code: let Cheese = new Pizza(["Cheese Pizza (Marinara, Mozzarella)"]);
+Code: let CheeseSize1 = new Pizza("cheese", "small", 10.99);
+Expected Output: Pizza { You've selected: Cheese Pizza (Marinara, Mozzarella)
+Size: small. Cost: 10.99 $ }
+
+Test: "It should return Cheese, size med section with ingredients"
+Code: let Cheese = new Pizza(["Cheese Pizza (Marinara, Mozzarella)"]);
+Code: let CheeseSize2 = new Pizza("cheese", "med", 12.99);
+Expected Output: Pizza { You've selected: Cheese Pizza (Marinara, Mozzarella)
+Size: med. Cost: 12.99 $ }
+
+Test: "It should return Cheese, size large section with ingredients"
+Code: let Cheese = new Pizza(["Cheese Pizza (Marinara, Mozzarella)"]);
+Code: let CheeseSize3 = new Pizza("cheese", "large", 14.85);
+Expected Output: Pizza { You've selected: Cheese Pizza (Marinara, Mozzarella)
+Size: large. Cost: 14.85 $ }
+ 
+
+Test: "It should return Pepperoni, size small section with ingredients"
+Code: let Pepperoni = new Pizza(["Pepperoni Pizza (Marinara, Mozzarella, Liguria Pepperoni)"]);
+Code: let Pepperoni1 = new Pizza("pepperoni", "small", 11.99);
+Expected Output: Pizza { You've selected: Pepperoni Pizza (Marinara, Mozzarella, Liguria Pepperoni)
+Size: small. Cost: 11.99 $ }
+
+
+ Test: "It should return Pepperoni, size med section with ingredients"
+Code: let Pepperoni = new Pizza(["Pepperoni Pizza (Marinara, Mozzarella, Liguria Pepperoni)"]);
+Code: let Pepperoni2 = new Pizza("pepperoni", "med", 13.99);
+Expected Output: Pizza { You've selected: Pepperoni Pizza (Marinara, Mozzarella, Liguria Pepperoni)
+Size: med. Cost: 13.99 $ }
+
+Test: "It should return Pepperoni, size large section with ingredients"
+Code: let Pepperoni = new Pizza(["Pepperoni Pizza (Marinara, Mozzarella, Liguria Pepperoni)"]);
+Code: let Pepperoni3 = new Pizza("pepperoni", "large", 14.85);
+Expected Output: Pizza { You've selected: Pepperoni Pizza (Marinara, Mozzarella, Liguria Pepperoni)
+Size: large. Cost: 14.85 $ }
+
+
+Test: "It should return Veggie, size small section with ingredients"
+Code: let Veggie = new Pizza(["Veggie Pizza (Fresh broccoli, tomatoes, green bell pepper)"]);
+Code: let Veggie1 = new Pizza("veggie", "small", 9.99);
+Expected Output: Pizza { You've selected: Veggie Pizza (Fresh broccoli, tomatoes, green bell pepper)
+Size: small. Cost: 9.99 $ }
+
+
+Test: "It should return Veggie, size med section with ingredients"
+Code: let Veggie = new Pizza(["Veggie Pizza (Fresh broccoli, tomatoes, green bell pepper)"]);
+Code: let Veggie2 = new Pizza("veggie", "med", 11.99);
+Expected Output: Pizza { You've selected: Veggie Pizza (Fresh broccoli, tomatoes, green bell pepper)
+Size: med. Cost: 11.99 $ }
+
+
+Test: "It should return Veggie, size large section with ingredients"
+Code: let Veggie = new Pizza(["Veggie Pizza (Fresh broccoli, tomatoes, green bell pepper)"]);
+Code: let Veggie3 = new Pizza("veggie", "large", 13.85);
+Expected Output: Pizza { You've selected: Veggie Pizza (Fresh broccoli, tomatoes, green bell pepper)
+Size: large. Cost: 13.85 $ }
+
+
+
+
 
 ```
 
