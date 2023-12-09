@@ -35,3 +35,18 @@ function getPizzaValue() {
     return selected;
 }
 
+function getData() {
+    const selected = getPizzaValue();
+    let getAllInfo = 0;
+    if (selected === "cheese") {
+        getAllInfo = Cheese.ingredient();
+    } else if (selected === "pepperoni") {
+        getAllInfo = Pepperoni.ingredient();
+    } else if (selected === "veggie") {
+        getAllInfo = Veggie.ingredient();
+    } else {
+        getAllInfo = null;
+    }
+    return getAllInfo;
+}
+// console.log(getData());
