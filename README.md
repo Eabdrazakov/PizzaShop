@@ -4,7 +4,7 @@
 
 <p>This is a website for a pizza company where a user can choose one or more individual toppings (cheese, pepperoni, artichoke, anchovy, etc.), a size to order a pizza, and see the final cost.</p>
 
-_Open [gh-page site]()_
+_Open [gh-page site](https://eabdrazakov.github.io/PizzaShop/)_
 
 ## Technologies Used
 * _HTML_
