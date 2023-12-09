@@ -6,9 +6,9 @@ function Pizza(topping, size, cost) {
     this.cost = cost;
 }
 
-let Cheese = new Pizza(["Cheese Pizza."]);
-let Pepperoni = new Pizza(["Pepperoni Pizza."]);
-let Veggie = new Pizza(["Veggie Pizza."]);
+let Cheese = new Pizza(["Cheese Pizza (Marinara, Mozzarella)"]);
+let Pepperoni = new Pizza(["Pepperoni Pizza (Marinara, Mozzarella, Liguria Pepperoni)"]);
+let Veggie = new Pizza(["Veggie Pizza (Fresh broccoli, tomatoes, green bell pepper)"]);
 
 let CheeseSize1 = new Pizza("cheese", "small", 10.99);
 let CheeseSize2 = new Pizza("cheese", "med", 12.99);
@@ -110,16 +110,24 @@ function farmHandler() {
     const form = document.querySelector("form");
     const result = document.getElementById("result");
     const result1 = document.getElementById("result1");
+    const payment = document.getElementById("buyer1");
+    const reset = document.getElementById("reset");
     form.addEventListener("submit", (e) => {
         e.preventDefault();
         const getInfo = getData();
         const getInfo2 = selectData();
         result.classList.remove("hidden");
         result1.classList.remove("hidden");
+        payment.classList.remove("hidden");
+        reset.classList.remove("hidden");
+
         result.innerText = getInfo;
         result1.innerText = getInfo2;
 
 
+
+        form.setAttribute("class", "hidden");
+        document.getElementById("menu").setAttribute("class", "hidden");
     });
 }
 

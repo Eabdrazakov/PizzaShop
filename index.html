@@ -10,13 +10,13 @@
 </head>
 
 <body>
-    <h1 class="menu">MENU</h1>
+    <h1 class="menu" id="menu">MENU</h1>
     <h2 class="pizza">Pizza</h2>
     <form>
         <label for="Cheese">
             <strong>Cheese(Classic)</strong>
             <input type="checkbox" name="pizza" value="cheese">
-            <br>Marinara, Mozzarella
+            <br>
         </label>
         <br>
         <input type="radio" name="size" value="small">
@@ -28,7 +28,7 @@
         <br>
         <label for="pepperoni"><strong>Pepperoni</strong>
             <input type="checkbox" name="pizza" value="pepperoni">
-            <br>Marinara, Mozzarella, Liguria Pepperoni</label>
+            <br></label>
         <br>
         <input type="radio" name="size" value="small1">
         <label for="small">small</label>
@@ -39,7 +39,7 @@
         <br>
         <label for="veggie"><strong>Veggie</strong>
             <input type="checkbox" name="pizza" value="veggie">
-            <br>Fresh broccoli, tomatoes, green bell pepper</label>
+            <br></label>
         <br>
         <input type="radio" name="size" value="small4">
         <label for="small">small</label>
@@ -53,6 +53,11 @@
     <div>
         <p class="hidden" id="result"></p>
         <p class="hidden" id="result1"></p>
+    </div>
+    <div>
+        <button id="buyer1" type="submit" class="hidden"><strong>Payment</strong></button>
+        <br>
+        <button type="reset" id="reset" class="hidden">Choose another</button>
     </div>
 
 

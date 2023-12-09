@@ -41,3 +41,9 @@ body {
 /* #result {
     color: red;
 } */
+
+#reset {
+    background-color: green;
+    color: #f4f4f4;
+    margin: 10px;
+}
