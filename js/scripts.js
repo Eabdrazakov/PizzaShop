@@ -18,3 +18,20 @@ Pizza.prototype.ingredient = function () {
     return "You've selected: " + this.topping + ". Size: " + this.size + ". Cost: " + this.cost;
 };
 // console.log(Veggie.ingredient())
+
+
+//UI Logic
+
+function getPizzaValue() {
+    const checkBox = document.getElementsByName("pizza");
+    let selected = 0;
+
+    for (let i = 0; i < checkBox.length; i++) {
+        if (checkBox[i].checked) {
+            selected = checkBox[i].value;
+            break;
+        }
+    }
+    return selected;
+}
+
