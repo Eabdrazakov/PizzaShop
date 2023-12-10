@@ -30,7 +30,7 @@ Pizza.prototype.ingredient = function () {
 
 Pizza.prototype.sizeAndCost = function () {
     return "Size: " + this.size + ". Cost: " + this.cost.toFixed(2) + " $";
-}
+};
 
 
 //UI Logic
