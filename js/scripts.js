@@ -1,37 +1,30 @@
 //Business Logic
 
-function Pizza(topping, size, cost) {
+function Pizza(topping, size) {
     this.topping = topping;
     this.size = size;
-    this.cost = cost;
+    this.cost = this.calculateCost();
 }
+Pizza.prototype.calculateCost = function () {
+    const baseCost = 10.0;
+    let sizeMultiplier;
 
-let Cheese = new Pizza(["Cheese Pizza (Marinara, Mozzarella)"]);
-let Pepperoni = new Pizza(["Pepperoni Pizza (Marinara, Mozzarella, Liguria Pepperoni)"]);
-let Veggie = new Pizza(["Veggie Pizza (Fresh broccoli, tomatoes, green bell pepper)"]);
+    switch (this.size) {
+        case "small":
+            sizeMultiplier = 1.0;
+            break;
+        case "med":
+            sizeMultiplier = 1.2;
+            break;
+        case "large":
+            sizeMultiplier = 1.5;
+            break;
+        default:
+            sizeMultiplier = 1.0;
+    }
 
-let CheeseSize1 = new Pizza("cheese", "small", 10.99);
-let CheeseSize2 = new Pizza("cheese", "med", 12.99);
-let CheeseSize3 = new Pizza("cheese", "large", 14.85);
-
-let Pepperoni1 = new Pizza("pepperoni", "small", 11.99);
-let Pepperoni2 = new Pizza("pepperoni", "med", 13.99);
-let Pepperoni3 = new Pizza("pepperoni", "large", 14.85);
-
-let Veggie1 = new Pizza("veggie", "small", 9.99);
-let Veggie2 = new Pizza("veggie", "med", 11.99);
-let Veggie3 = new Pizza("veggie", "large", 13.85);
-
-
-Pizza.prototype.ingredient = function () {
-    return "You've selected: " + this.topping;
+    return baseCost * sizeMultiplier;
 };
-
-
-Pizza.prototype.sizeAndCost = function () {
-    return "Size: " + this.size + ". Cost: " + this.cost.toFixed(2) + " $";
-};
-
 
 //UI Logic
 
@@ -46,22 +39,6 @@ function getPizzaValue() {
     return null;
 }
 
-function getData() {
-    const selected = getPizzaValue();
-    let getAllInfo = null;
-    if (selected === "cheese") {
-        getAllInfo = Cheese.ingredient();
-    } else if (selected === "pepperoni") {
-        getAllInfo = Pepperoni.ingredient();
-    } else if (selected === "veggie") {
-        getAllInfo = Veggie.ingredient();
-    } else {
-        alert("Please select, what would you like to order!");
-        getAllInfo = "";
-    }
-    return getAllInfo;
-}
-
 
 function getSizeValue() {
     const sizeValue = document.getElementsByName("size");
@@ -74,33 +51,23 @@ function getSizeValue() {
     return null;
 }
 
+function createPizza() {
+    const selectedTopping = getPizzaValue();
+    const selectedSize = getSizeValue();
 
-function selectData() {
-    const selected = getSizeValue();
-    let getAllInfo = null;
-    if (selected === "small") {
-        getAllInfo = CheeseSize1.sizeAndCost();
-    } else if (selected === "med") {
-        getAllInfo = CheeseSize2.sizeAndCost();
-    } else if (selected === "large") {
-        getAllInfo = CheeseSize3.sizeAndCost();
-    } else if (selected === "small1") {
-        getAllInfo = Pepperoni1.sizeAndCost();
-    } else if (selected === "med2") {
-        getAllInfo = Pepperoni2.sizeAndCost();
-    } else if (selected === "large3") {
-        getAllInfo = Pepperoni3.sizeAndCost();
-    } else if (selected === "small4") {
-        getAllInfo = Veggie1.sizeAndCost();
-    } else if (selected === "med5") {
-        getAllInfo = Veggie2.sizeAndCost();
-    } else if (selected === "large6") {
-        getAllInfo = Veggie3.sizeAndCost();
-    } else {
-        alert("Select size to get how much cost.");
-        getAllInfo = "";
+    if (selectedTopping && selectedSize) {
+        return new Pizza(selectedTopping, selectedSize);
     }
-    return getAllInfo;
+
+    return null;
+}
+
+function displayPizzaInfo(pizza) {
+    if (pizza) {
+        return `You've selected: ${pizza.topping}.`;
+    }
+
+    return "";
 }
 
 function farmHandler() {
@@ -111,17 +78,22 @@ function farmHandler() {
     const reset = document.getElementById("reset");
     const form2 = document.getElementById("form2");
 
+
     form.addEventListener("submit", (e) => {
         e.preventDefault();
-        const getInfo = getData();
-        const getInfo2 = selectData();
-        result.classList.remove("hidden");
-        result1.classList.remove("hidden");
-        payment.classList.remove("hidden");
-        reset.classList.remove("hidden");
+        const pizza = createPizza();
 
-        result.innerText = getInfo;
-        result1.innerText = getInfo2;
+        if (pizza) {
+            result.classList.remove("hidden");
+            result1.classList.remove("hidden");
+            payment.classList.remove("hidden");
+            reset.classList.remove("hidden");
+
+            result.innerText = displayPizzaInfo(pizza);
+            result1.innerText = `Size: ${pizza.size}. Cost: ${pizza.cost.toFixed(2)} $`;
+        } else {
+            alert("Please select both topping and size.");
+        }
 
         reset.addEventListener("click", () => {
             form.removeAttribute("class");
@@ -162,7 +134,8 @@ function farmHandler() {
 
         form.setAttribute("class", "hidden");
         document.getElementById("menu").setAttribute("class", "hidden");
-    });
-}
+    })
+};
+
 
 document.addEventListener("DOMContentLoaded", farmHandler);
